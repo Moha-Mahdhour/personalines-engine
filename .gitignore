@@ -10,3 +10,7 @@ venv/
 .venv/
 # os
 .DS_Store
+# packaging
+build/
+dist/
+*.egg-info/
