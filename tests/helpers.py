@@ -20,3 +20,14 @@ def task(status=TaskStatus.INIT, file_name="leads.csv", field="LinkedIn", task_i
 
 def leads_csv(rows=LEADS):
     return render_csv(rows)
+
+
+class EchoChat:
+    """Replies with the lead's headline, so assertions can check the output."""
+    def complete(self, messages):
+        return "Line for " + messages[1]["content"].split("Headline: ")[1].splitlines()[0]
+
+
+def record(status, task_id=1):
+    return {"record": {"id": task_id, "UserID": "u-1", "FileName": "leads.csv", "Status": status,
+                       "LinkedinField": "LinkedIn"}}

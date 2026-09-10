@@ -13,18 +13,9 @@ from personalines.examples import ExampleBank
 from personalines.jobs import JobFiles, parse_csv
 from personalines.status import TaskStatus
 from personalines.storage import InMemoryTaskStore
-from tests.helpers import PROFILES, leads_csv, task
+from tests.helpers import PROFILES, EchoChat, leads_csv, record, task
 
 ROOT = Path(__file__).resolve().parent.parent
-
-
-class EchoChat:
-    def complete(self, messages):
-        return "Line for " + messages[1]["content"].split("Headline: ")[1].splitlines()[0]
-
-
-def record(status):
-    return {"record": {"id": 1, "UserID": "u-1", "FileName": "leads.csv", "Status": status, "LinkedinField": "LinkedIn"}}
 
 
 class EndToEndTests(unittest.TestCase):
