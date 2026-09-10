@@ -1,0 +1,12 @@
+# secrets
+.env
+# local job data (customer uploads never belong in git)
+Filing/
+*.csv
+# python
+__pycache__/
+*.pyc
+venv/
+.venv/
+# os
+.DS_Store
