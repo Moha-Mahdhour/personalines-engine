@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "personalines-engine"
+version = "0.2.0"
+description = "Lead enrichment and LLM personalization pipeline driven by Supabase tasks."
+readme = "README.md"
+license = { text = "MIT" }
+authors = [{ name = "Al-Mahanad Al-Mahdhour" }]
+requires-python = ">=3.10"
+# The core package is standard-library only. Each external service is an
+# optional extra so the domain logic and tests run with no installs at all.
+dependencies = []
+
+[project.optional-dependencies]
+supabase = ["supabase>=2.5"]
+webhook = ["fastapi>=0.111", "uvicorn>=0.30"]
+realtime = ["realtime>=1.0"]
+enrichment = ["proxycurl-py>=0.1"]
+dotenv = ["python-dotenv>=1.0"]
+all = ["personalines-engine[supabase,webhook,realtime,enrichment,dotenv]"]
+dev = ["pytest>=8"]
+
+[tool.setuptools.packages.find]
+include = ["personalines*"]
+
+[tool.setuptools.package-data]
+personalines = ["data/*.txt"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
